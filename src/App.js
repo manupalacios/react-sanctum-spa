@@ -1,16 +1,19 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
-import Books from './Books';
+import Books from './components/Books';
+import Login from './components/Login';
 
 const App = () => {
     return (
         <Router>
             <div>
-                <NavLink to='/books'>Books</NavLink>
+                <NavLink to="/login">Login</NavLink><br />
+                <NavLink to="/books">Books</NavLink>
             </div>
             <Switch>
-                <Route path='/books' component={Books} />
+                <Route path="/login" component={Login} />
+                <Route path="/books" component={Books} />
             </Switch>
         </Router>
     );
