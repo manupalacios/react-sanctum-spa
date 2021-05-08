@@ -1,21 +1,23 @@
 import React from "react";
-import axios from "axios";
+import apiClient from "../services/api";
 
 const Login = (props) => {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.get("http://localhost:8000/sanctum/csrf-cookie")
-            .then( response => {
-                axios.post("http://localhost:8000/login", {
+        apiClient.get("/sanctum/csrf-cookie")
+            .then((response) => {
+                apiClient.post("/login", {
                     email: email,
                     password: password,
-                }).then((response) => {
+                })
+                .then((response) => {
                     console.log(response);
-                }).catch((error) => console.log( error ));
+                })
+                .catch((error) => console.log(error));
             })
-            .catch((error) => console.log( error ));
+            .catch((error) => console.log(error));
     };
     return (
         <div>
